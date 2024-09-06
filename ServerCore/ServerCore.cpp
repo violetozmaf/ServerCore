@@ -3,19 +3,58 @@
 
 #include <iostream>
 #include <thread>
+#include <string>
+
+#include "IOCPNetwork/IOCPServer.h"
+#include "EchoServer.h"
+
+
+const UINT16 SERVER_PORT = 8600;
+const UINT16 MAX_CLIENT = 100;			// 총 접속할수 있는 클라이언트
+const UINT32 MAX_IO_WORKER_THREAD = 4;	// 쓰레드 풀에 넣을 쓰레드 수 
+
+
+/*--------------------------------------------------------------------------
+* 1. Socket 초기화 WSASocket()
+* 2. 설정한 서버주소와 Bind()
+* 3. 접속 요청 받아 들이기위해 IOCompletionPort 소켓을 등록하고 대기 Listen()
+* 4. IOCP 생성하고 생성된 IOCompletionPort 에 소켓 연결하여 비동기 처리 준비 CreateIoCompletionPort()
+* 5. Server 에서 Client 받을 준비 완료됨. 
+* 5. 생성된 IOCPHandle 에 접속한 Client정보 할당
+* 5. WorkerThread 생성
+* 6. AcceptThread 생성
+* 7. 서버 시작!!!
+--------------------------------------------------------------------------*/
+
 
 int main()
 {
-    
+	
+	//IOCPServer server;
+	EchoServer server;
+
+	// 소켓 초기화
+	server.InitSocket(MAX_IO_WORKER_THREAD);
+
+	// 소켓과 서버 주소 연결하고 등록
+	server.BindListen(SERVER_PORT);
+	
+	//server.StartServer(MAX_CLIENT);
+	
+	server.Run(MAX_CLIENT);
+
+	printf("아무 키나 누를때까지 대기\n");
+	while (true)
+	{
+		std::string inputCmd;
+		std::getline(std::cin, inputCmd);
+
+		if (inputCmd == "q")
+		{
+			break;
+		}
+	}
+
+	server.End();
+	return 0;
 }
-
-// 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
-// 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
-
-// 시작을 위한 팁: 
-//   1. [솔루션 탐색기] 창을 사용하여 파일을 추가/관리합니다.
-//   2. [팀 탐색기] 창을 사용하여 소스 제어에 연결합니다.
-//   3. [출력] 창을 사용하여 빌드 출력 및 기타 메시지를 확인합니다.
-//   4. [오류 목록] 창을 사용하여 오류를 봅니다.
-//   5. [프로젝트] > [새 항목 추가]로 이동하여 새 코드 파일을 만들거나, [프로젝트] > [기존 항목 추가]로 이동하여 기존 코드 파일을 프로젝트에 추가합니다.
-//   6. 나중에 이 프로젝트를 다시 열려면 [파일] > [열기] > [프로젝트]로 이동하고 .sln 파일을 선택합니다.

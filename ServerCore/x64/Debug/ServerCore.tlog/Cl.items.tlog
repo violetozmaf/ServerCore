@@ -1,0 +1,6 @@
+C:\Users\naddic\source\repos\ServerCore\ServerCore\Packet\PacketManager.cpp;C:\Users\naddic\source\repos\ServerCore\ServerCore\x64\Debug\PacketManager.obj
+C:\Users\naddic\source\repos\ServerCore\ServerCore\Queue\CircleQueue.cpp;C:\Users\naddic\source\repos\ServerCore\ServerCore\x64\Debug\CircleQueue.obj
+C:\Users\naddic\source\repos\ServerCore\ServerCore\Thread\CoreTLS.cpp;C:\Users\naddic\source\repos\ServerCore\ServerCore\x64\Debug\CoreTLS.obj
+C:\Users\naddic\source\repos\ServerCore\ServerCore\ServerCore.cpp;C:\Users\naddic\source\repos\ServerCore\ServerCore\x64\Debug\ServerCore.obj
+C:\Users\naddic\source\repos\ServerCore\ServerCore\Utils\Exception.cpp;C:\Users\naddic\source\repos\ServerCore\ServerCore\x64\Debug\Exception.obj
+C:\Users\naddic\source\repos\ServerCore\ServerCore\Utils\Spinlock.cpp;C:\Users\naddic\source\repos\ServerCore\ServerCore\x64\Debug\Spinlock.obj

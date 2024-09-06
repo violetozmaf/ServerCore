@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -35,7 +35,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -73,9 +73,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Libraries\$(Configuration)\</OutDir>
+    <IncludePath>C:\Users\naddic\source\repos\ServerCore\ServerCore\ThirdParty\hiredis;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\naddic\source\repos\ServerCore\ServerCore\ThirdParty\hiredis\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\naddic\source\repos\ServerCore\ServerCore\ThirdParty\hiredis;C:\Users\naddic\source\repos\ServerCore\ServerCore\ThirdParty\hiredis-plus-plus\src\sw\redis++;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\naddic\source\repos\ServerCore\ServerCore\ThirdParty\hiredis\Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -89,10 +93,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\naddic\source\repos\ServerCore\ServerCore\ThirdParty\hiredis\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>hiredis.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -109,6 +116,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\naddic\source\repos\ServerCore\ServerCore\ThirdParty\hiredis\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -117,10 +125,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\naddic\source\repos\ServerCore\ServerCore\ThirdParty\hiredis\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)\ThirdParty\hiredis\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>hiredis.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,18 +152,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CircleQueue.cpp" />
-    <ClCompile Include="CoreTLS.cpp" />
-    <ClCompile Include="IOCPServer.cpp" />
+    <ClCompile Include="Packet\PacketManager.cpp" />
+    <ClCompile Include="Queue\CircleQueue.cpp" />
+    <ClCompile Include="Thread\CoreTLS.cpp" />
     <ClCompile Include="ServerCore.cpp" />
     <ClCompile Include="Utils\Exception.cpp" />
     <ClCompile Include="Utils\Spinlock.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CircleQueue.h" />
-    <ClInclude Include="CoreTLS.h" />
-    <ClInclude Include="IOCPServer.h" />
+    <ClInclude Include="ChatServer.h" />
+    <ClInclude Include="Packet\Packet.h" />
+    <ClInclude Include="Queue\CircleQueue.h" />
+    <ClInclude Include="IOCPNetwork\ClientInfo.h" />
+    <ClInclude Include="Room.h" />
+    <ClInclude Include="RoomManager.h" />
+    <ClInclude Include="ThirdParty\CRedisConn.h" />
+    <ClInclude Include="Thread\CoreTLS.h" />
+    <ClInclude Include="User\User.h" />
+    <ClInclude Include="User\UserManager.h" />
+    <ClInclude Include="IOCPNetwork\Define.h" />
+    <ClInclude Include="IOCPNetwork\IOCPServer.h" />
+    <ClInclude Include="Packet\PacketManager.h" />
+    <ClInclude Include="Utils\ErrorCode.h" />
     <ClInclude Include="Utils\Exception.h" />
+    <ClInclude Include="Utils\RedisManager.h" />
+    <ClInclude Include="Utils\RedisTaskDefine.h" />
     <ClInclude Include="Utils\Spinlock.h" />
     <ClInclude Include="Utils\Types.h" />
   </ItemGroup>

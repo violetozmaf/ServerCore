@@ -24,13 +24,13 @@
     <ClCompile Include="Utils\Spinlock.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CoreTLS.cpp">
+    <ClCompile Include="Thread\CoreTLS.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CircleQueue.cpp">
+    <ClCompile Include="Queue\CircleQueue.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="IOCPServer.cpp">
+    <ClCompile Include="Packet\PacketManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,13 +44,52 @@
     <ClInclude Include="Utils\Spinlock.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CoreTLS.h">
+    <ClInclude Include="Thread\CoreTLS.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CircleQueue.h">
+    <ClInclude Include="Queue\CircleQueue.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="IOCPServer.h">
+    <ClInclude Include="IOCPNetwork\IOCPServer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCPNetwork\Define.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCPNetwork\ClientInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet\PacketManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet\Packet.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="User\User.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="User\UserManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\ErrorCode.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ChatServer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\CRedisConn.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\RedisManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\RedisTaskDefine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

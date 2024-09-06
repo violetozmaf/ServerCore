@@ -1,0 +1,8 @@
+﻿  PacketManager.cpp
+  CircleQueue.cpp
+  CoreTLS.cpp
+  ServerCore.cpp
+  Exception.cpp
+  Spinlock.cpp
+  코드를 생성하고 있습니다...
+  ServerCore.vcxproj -> C:\Users\naddic\source\repos\ServerCore\x64\Debug\ServerCore.exe

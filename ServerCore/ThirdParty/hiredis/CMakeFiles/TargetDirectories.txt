@@ -1,0 +1,7 @@
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/CMakeFiles/hiredis.dir
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/CMakeFiles/hiredis-test.dir
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/CMakeFiles/PACKAGE.dir
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/CMakeFiles/RUN_TESTS.dir
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/CMakeFiles/INSTALL.dir
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/CMakeFiles/ALL_BUILD.dir
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/CMakeFiles/ZERO_CHECK.dir

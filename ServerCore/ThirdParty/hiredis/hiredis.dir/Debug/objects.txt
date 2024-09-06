@@ -1,0 +1,7 @@
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/hiredis.dir/Debug/alloc.obj
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/hiredis.dir/Debug/async.obj
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/hiredis.dir/Debug/hiredis.obj
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/hiredis.dir/Debug/net.obj
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/hiredis.dir/Debug/read.obj
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/hiredis.dir/Debug/sds.obj
+C:/Users/naddic/Downloads/hiredis-master/hiredis-cmake/hiredis.dir/Debug/sockcompat.obj
