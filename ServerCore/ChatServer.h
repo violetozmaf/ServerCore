@@ -16,7 +16,7 @@ public:
 	ChatServer() = default;
 	virtual ~ChatServer() = default;
 
-	virtual void OnConenct(const UINT32 clientIndex_) override
+	virtual void OnConnect(const UINT32 clientIndex_) override
 	{
 		printf_s("[OnConnect] 클라이언트 : Index(%d)\n", clientIndex_);
 
@@ -42,7 +42,7 @@ public:
 	{
 		auto sendPacketFunc = [&](UINT32 clientIndex_, UINT16 packetSize_, char* pSendPacket)
 		{
-			SendMsg(clientIndex_, packetSize, pSendPacket);
+			SendMsg(clientIndex_, packetSize_, pSendPacket);
 		};
 
 		m_pPacketManager = std::make_unique<PacketManager>();
