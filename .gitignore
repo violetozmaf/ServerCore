@@ -1,3 +1,4 @@
-.vs
-DummyClient/x64
-ServerCore/Debug
+/DummyClient/x64
+/ServerCore/Debug
+/ServerCore/x64
+/.vs
