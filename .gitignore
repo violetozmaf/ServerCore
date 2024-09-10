@@ -1,5 +1,5 @@
-/DummyClient/x64
-/GameServer/x64
-/ServerCore/Debug
-/ServerCore/x64
-/.vs
+/DummyClient/x64/
+/GameServer/x64/
+/ServerCore/Debug/
+/ServerCore/x64/
+/.vs/
