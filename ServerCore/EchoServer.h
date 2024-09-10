@@ -26,10 +26,10 @@ public:
 
 	virtual void OnReceive(const UINT32 clientIndex_, const UINT32 size_, char* pData_) override
 	{
-		printf_s("[OnReceive] Index(%d), dataSize(%d)\n", clientIndex_, size_);
+		printf_s("[OnReceive] Index(%d), dataSize(%d) data(%s)\n", clientIndex_, size_, pData_);
 
 		PacketData packet;
-		packet.Set(clientIndex_, size_, pData_);
+		packet.Set(clientIndex_, size_ + 1, pData_);
 
 		std::lock_guard<std::mutex> guard(mLock);
 		mPacketDataQueue.push_back(packet);

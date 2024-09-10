@@ -7,13 +7,17 @@
 #include "Client.h"
 
 const std::string IP = "127.0.0.1";
-const std::string PORT = "8600";
+const USHORT PORT = 8600;
 
 int main(int argc, char* argv[])
 {
     try
     {
         Client chat(IP, PORT);
+        chat.Start();
+        /*boost::asio::io_service io_context;
+        Client chat(io_context, IP, PORT);
+        io_context.run();*/
     }
     catch (std::exception& e)
     {

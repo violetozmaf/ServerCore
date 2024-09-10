@@ -12,6 +12,7 @@ public:
 	stClientInfo()
 	{
 		ZeroMemory(&mRecvOverlappedEx, sizeof(stOverlappedEx));
+		ZeroMemory(&mSendOverlappedEx, sizeof(stOverlappedEx));
 		mSock = INVALID_SOCKET;
 	}
 
@@ -141,10 +142,21 @@ public:
 		DWORD dwFlag = 0;
 		DWORD dwRecvNumBytes = 0;
 
+		ZeroMemory(&mRecvOverlappedEx, sizeof(stOverlappedEx));
+		/*ZeroMemory(&mRecvOverlappedEx.m_wsaOverlapped, sizeof(WSAOVERLAPPED));
+		mRecvOverlappedEx.m_wsaOverlapped.hEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
+		if (mRecvOverlappedEx.m_wsaOverlapped.hEvent == NULL)
+		{
+			printf_s("[Error] CreateEvent Fail - %d\n", WSAGetLastError());
+			return false;
+		}*/
+
 		mRecvOverlappedEx.m_wsaBuf.len = MAX_SOCK_RECVBUF;
 		mRecvOverlappedEx.m_wsaBuf.buf = mRecvBuf;
 		mRecvOverlappedEx.m_eOperation = IOOperation::RECV;
 
+		ZeroMemory(mRecvBuf, sizeof(mRecvBuf));
+		
 		int32_t nRet = WSARecv(
 			mSock,
 			&(mRecvOverlappedEx.m_wsaBuf),
@@ -168,8 +180,12 @@ public:
 	// 1개의 쓰레드에서만 호출해야함
 	bool SendMsg(const UINT32 dataSize_, char* pMsg_)
 	{
+		// 초기화
 		auto sendOverlappedEx = new stOverlappedEx;
 		ZeroMemory(sendOverlappedEx, sizeof(stOverlappedEx));
+
+		sendOverlappedEx->m_wsaOverlapped.hEvent = NULL;
+		
 		sendOverlappedEx->m_wsaBuf.len = dataSize_;
 		sendOverlappedEx->m_wsaBuf.buf = new char[dataSize_];
 		CopyMemory(sendOverlappedEx->m_wsaBuf.buf, pMsg_, dataSize_);
@@ -179,7 +195,7 @@ public:
 
 		mSendDataQueue.push(sendOverlappedEx);
 
-		if (mSendDataQueue.size() == 1)
+		if (mSendDataQueue.size() > 0)
 		{
 			SendIO();
 		}
@@ -209,12 +225,15 @@ private:
 		auto sendOverlappedEx = mSendDataQueue.front();
 
 		DWORD dwRecvNumBytes = 0;
+
+		//ZeroMemory(&mSendOverlappedEx, sizeof(stOverlappedEx));
+
 		int32_t nRet = WSASend(mSock,
 			&(sendOverlappedEx->m_wsaBuf),
 			1,
 			&dwRecvNumBytes,
 			0,
-			(LPWSAOVERLAPPED) & (sendOverlappedEx),
+			(LPWSAOVERLAPPED) & (sendOverlappedEx->m_wsaOverlapped),
 			NULL
 		);
 
@@ -259,6 +278,9 @@ private:
 	SOCKET				mSock;							// Client 와 연결되는 소켓
 	stOverlappedEx		mRecvOverlappedEx;				// RECV Overlapped I/O 작업용 변수
 	char				mRecvBuf[64] = { 0, };
+
+	stOverlappedEx		mSendOverlappedEx;				// Send Overlapped I/O 작업용 변수
+	char				mSendBuf[64] = { 0, };
 	
 	stOverlappedEx		mAcceptOverlappedEx;			// Accept Overlapped I/O 작업용
 	char				mAcceptBuf[64] = { 0, };

@@ -23,10 +23,11 @@ struct PacketData
 	void Set(UINT32 sessionIndex_, UINT32 dataSize_, char* pData)
 	{
 		SessionIndex = sessionIndex_;
-		DataSize = dataSize_;
 
-		pPacketData = new char[dataSize_];
-		CopyMemory(pPacketData, pData, dataSize_);
+		DataSize = dataSize_;
+		pPacketData = new char[DataSize];
+		memset(pPacketData, 0, DataSize);
+		CopyMemory(pPacketData, pData, DataSize);
 	}
 
 	void Release()
